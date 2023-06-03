@@ -1,7 +1,9 @@
-import styled from 'styled-components'
+import { Container } from './styles';
 
-function Example() {
+export function Home() {
   return (
+    <Container>
     <h1> Xis Salada</h1>
+    </Container>
   )
 }
