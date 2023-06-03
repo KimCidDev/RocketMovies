@@ -7,5 +7,6 @@ export const Container = styled.div`
     font-size: 36px;
     letter-spacing: 1.5px;
     color: ${({ theme }) => theme.COLORS.YELLOW_500};
+    
   }
 `;
