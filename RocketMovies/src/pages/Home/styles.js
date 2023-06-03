@@ -6,4 +6,11 @@ export const Container = styled.div`
 
   background-color: #1c1b1e;
   color: white;
+
+  > h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-weight: normal;
+    letter-spacing: 1px;
+    
+  }
 `;
