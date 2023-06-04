@@ -8,15 +8,20 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.COLORS.PURPLE_600};
+    background-color: ${({ theme }) => theme.COLORS.PURPLE_800};
     color: ${({ theme }) => theme.COLORS.WHITE};
     -webkit-font-smoothing: antialiased;
   }
 
-  body, p, input, textarea {
-    margin: 10px 0;
+  body, p, textarea {
     font-family: 'Spectral', serif;
     font-size: 16px;
+  }
+
+  input {
+    font-family: 'Spectral', serif;
+    font-weight: 700;
+    font-size: 14px;
   }
 
   button, a {

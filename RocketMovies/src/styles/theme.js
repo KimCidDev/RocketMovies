@@ -1,6 +1,8 @@
 export default {
   COLORS: {
-    PURPLE_600: '#610345',
+    PURPLE_800: '#510239',
+    PURPLE_700: '#610345',
+    PURPLE_600: '#6C044D',
     PURPLE_400: '#8A0562',
     PURPLE_500: '#9D0670',
 
@@ -8,8 +10,10 @@ export default {
     YELLOW_500: '#F0C105',
     YELLOW_400: '#FBCF23',
 
-    WHITE: '#FFF',
+    DIRTY_YELLOW: '#E6E49F',
+    DIRTY_WHITE: '#E3E7D3',
 
+    WHITE: '#FFF',
     BLACK: '#000'
   }
 };

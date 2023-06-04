@@ -1,17 +1,18 @@
-import { Container } from './styles';
+import { Container, Profile } from './styles';
 import { Logo } from '../Logo';
-import { Account } from '../Account'
 
 export function Header () {
   return (
     <Container>
       <Logo />
-
       <input type="text" />
-
-      <Account />
-
-
+      <Profile>
+        <div>
+          <strong>Kim Teixeira</strong>
+          <span>sair</span>
+          </div>
+        <img src="https://github.com/kimciddev.png" alt="user profile image" />
+      </Profile>
     </Container>
   )
 }
