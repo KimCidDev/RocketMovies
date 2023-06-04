@@ -25,6 +25,8 @@ export default createGlobalStyle`
   }
 
   button, a {
+    font-family: 'Spectral', serif;
+    font-weight: 700;
     cursor: pointer;
     text-decoration: none;
   }
