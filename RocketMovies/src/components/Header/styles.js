@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   padding: 0 123px;
 
-  border-bottom: 1px solid ${({ theme }) => theme.COLORS.PURPLE_700};;
+  border-bottom: 1px solid ${({ theme }) => theme.COLORS.PURPLE_700};
 
   input {
     width: 630px;
