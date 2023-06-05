@@ -18,4 +18,12 @@ export const Container = styled.div`
 
   color: ${({ theme }) => theme.COLORS.DIRTY_WHITE};
   background-color: ${({ theme }) => theme.COLORS.PURPLE_700};
+
+  > p {
+    margin-top: 15px;
+  }
+
+  > footer {
+    margin-top: 15px;
+  }
 `;
