@@ -1,4 +1,4 @@
-import { Container, Avatar } from './styles';
+import { Container, Avatar, Form } from './styles';
 import { Input } from '../../components/Input';
 import { ButtonText } from '../../components/ButtonText';
 
@@ -11,14 +11,17 @@ export function Profile () {
       <header>
         <ButtonText icon={TiArrowLeftThick}title="Voltar"/>
       </header>
+
+
+      <Form>
       <Avatar>
         <img src="https://github.com/kimciddev.png" alt="User Profile picture" />
-        <div>
+        <label htmlFor="avatar">
           <FiCamera />
-        </div>
+          <input id="avatar" type="file" />
+        </label>
       </Avatar>
-
-      <form>
+      
       <Input         
         placeholder="Nome"
         type="text"
@@ -38,7 +41,7 @@ export function Profile () {
         icon={FiLock}/>
 
         <button>Pronto!</button>
-        </form>
+        </Form>
 
     </Container>
   )
