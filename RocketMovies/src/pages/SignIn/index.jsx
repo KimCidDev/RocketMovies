@@ -16,7 +16,7 @@ export function SignIn () {
       <Logo />
       
       <p>Every little piece of important information you'd certainly forget</p>
-      <h3> Entre em seu perfil</h3>
+      <h3>Sign In</h3>
 
       <Input         
         placeholder="Nome"
@@ -29,7 +29,7 @@ export function SignIn () {
 
       <Button title='Entrar'/>
 
-      <ButtonText icon={TiArrowLeftThick}title="Voltar" />
+      <ButtonText icon={TiArrowLeftThick}title="Return" />
       </Form>
       <Background />
     </Container>
