@@ -1,5 +1,4 @@
-import { Container } from './styles'
-import { TiArrowLeftThick } from "react-icons/ti";
+import { Container } from './styles';
 
 
 export function ButtonText ({icon: Icon, title, ...rest}) {
