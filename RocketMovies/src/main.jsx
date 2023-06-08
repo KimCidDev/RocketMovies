@@ -7,13 +7,13 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 
 // While !routes
-import { SignUp } from './pages/SignUp';
+import { New } from './pages/New';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <SignUp />
+    <New />
 
     </ThemeProvider>
   </React.StrictMode>,

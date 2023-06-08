@@ -1,10 +1,11 @@
 export default {
   COLORS: {
+    PURPLE_900: '#3C022A',
     PURPLE_800: '#510239',
     PURPLE_700: '#610345',
     PURPLE_600: '#6C044D',
-    PURPLE_400: '#8A0562',
-    PURPLE_500: '#9D0670',
+    PURPLE_500: '#8A0562',
+    PURPLE_400: '#9D0670',
 
     YELLOW_600: '#E3B505',
     YELLOW_500: '#F0C105',
