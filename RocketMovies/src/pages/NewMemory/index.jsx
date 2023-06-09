@@ -7,7 +7,7 @@ import { Input } from '../../components/Input';
 
 import { TiArrowLeftThick, TiTimes, TiPlus } from "react-icons/ti";
 
-export function New () {
+export function NewMemory () {
   return (
     <Container>
       <Header />

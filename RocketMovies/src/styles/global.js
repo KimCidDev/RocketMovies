@@ -22,6 +22,7 @@
       font-family: 'Spectral', serif;
       font-weight: 700;
       font-size: 14px;
+      border-radius: 10px;
     }
 
     button, a {
@@ -29,6 +30,7 @@
       font-weight: 700;
       cursor: pointer;
       text-decoration: none;
+      border-radius: 10px;
     }
 
     button:hover, a:hover {
