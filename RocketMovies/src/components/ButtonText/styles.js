@@ -10,7 +10,7 @@ export const Container = styled.button`
   color: ${({ theme }) => theme.COLORS.DIRTY_WHITE};
 
   > span {
-    font-size: 21px;
+    font-size: 16px;
     margin-left: 8px;
   }
 `;

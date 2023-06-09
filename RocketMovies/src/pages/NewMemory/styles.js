@@ -17,10 +17,6 @@ export const Form = styled.form`
   justify-content: center;
   align-items: left;
 
-  > button span {
-    font-size: 16px;
-  }
-
   > h1 {
     font-size: 30px;
   }
