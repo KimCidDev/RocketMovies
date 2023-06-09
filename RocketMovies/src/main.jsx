@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 
 // While !routes
-import { Routes } from './routes';
+import { Routes } from './routes/app.routes';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
