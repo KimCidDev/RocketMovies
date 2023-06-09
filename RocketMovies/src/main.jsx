@@ -7,13 +7,13 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 
 // While !routes
-import { NewMemory } from './pages/NewMemory';
+import { ShowMemory } from './pages/ShowMemory';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <NewMemory />
+    <ShowMemory />
 
     </ThemeProvider>
   </React.StrictMode>,
