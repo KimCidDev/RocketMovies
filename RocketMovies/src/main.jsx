@@ -7,13 +7,13 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 
 // While !routes
-import { Routes } from './routes/app.routes';
+import { AppRoutes } from './routes/app.routes.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <Routes />
+    <AppRoutes />
 
     </ThemeProvider>
   </React.StrictMode>,
