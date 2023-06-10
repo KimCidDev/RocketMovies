@@ -8,7 +8,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
 
-    padding: 50px 123px;
+    padding: 35px 123px;
 
     h1 {
       color: ${({ theme }) => theme.COLORS.DIRTY_WHITE};
@@ -35,5 +35,6 @@ export const Container = styled.div`
 
   section {
     padding: 0 123px;
+    padding-bottom: 30px;
   }
 `;

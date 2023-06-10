@@ -4,12 +4,15 @@ import { ButtonText } from '../../components/ButtonText';
 
 import {  FiMail, FiLock, FiUserPlus, FiCamera } from 'react-icons/fi'
 import { TiArrowLeftThick } from "react-icons/ti";
+import { Link } from 'react-router-dom';
 
 export function Profile () {
   return (
     <Container>
       <header>
+        <Link to='/'>
         <ButtonText icon={TiArrowLeftThick}title="Voltar"/>
+        </Link>
       </header>
 
 
@@ -40,7 +43,10 @@ export function Profile () {
         type="password"
         icon={FiLock}/>
 
-        <button>Pronto!</button>
+
+        
+        <button> <Link to='/'>Pronto!</Link></button>
+        
         </Form>
 
     </Container>

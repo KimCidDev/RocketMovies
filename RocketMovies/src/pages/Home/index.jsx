@@ -1,6 +1,7 @@
 import { Container } from './styles';
 import { Header } from '../../components/Header';
 import { Movie } from '../../components/Movie';
+import { Link } from 'react-router-dom';
 
 
 import { TiPlus } from "react-icons/ti";
@@ -11,10 +12,12 @@ export function Home() {
     <Header />
     <div>
       <h1>Meus Filmes</h1>
+      <Link to='/new'>
       <button>
       <TiPlus />
         Adicionar Filme
       </button>
+      </Link>
       
     </div>
     <section>
