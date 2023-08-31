@@ -7,7 +7,7 @@ export function AuthRoutes () {
   return (
     <Routes>
       <Route path='/' element={<SignIn />}/>
-      <Route path='/signup' element={<SignUp />}/>
+      <Route path='/signUp' element={<SignUp />}/>
     </Routes>
   )
 }

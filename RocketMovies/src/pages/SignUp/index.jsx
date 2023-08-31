@@ -17,23 +17,19 @@ export function SignUp () {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  function handleSignUp () {
+  async function handleSignUp () {
     if (!name || !email || !password) {
-      return alert("Não deixe campos vazios, por favor.")
-      
+      return alert("Não deixe campos vazios, por favor.")      
     }
 
-    api.post('/users', { name, email, password })
-    .then(() => {
-      alert("usuário cadastrado com sucesso")
-    })
-    .catch(error => {
+    api.post('/users', { name, email, password }).then(() => {
+      alert("usuário cadastrado com sucesso! eee")
+    }).catch( error => { 
       if (error.response) {
-        alert(error.response.data.message);
-      } else {
-        alert("não foi possível cadastrar");
-      }
-    })
+        alert(error.response.data.message)
+    } else {
+      alert("xis salada")
+    }})
   }
 
   return (

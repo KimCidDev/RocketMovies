@@ -4,6 +4,7 @@ import { ButtonText } from '../../components/ButtonText';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Logo } from '../../components/Logo'
+import { Link } from 'react-router-dom';
 
 
 import { FiMail, FiUserPlus } from 'react-icons/fi'
@@ -30,6 +31,9 @@ export function SignIn () {
       <Button title='Entrar'/>
 
       <ButtonText icon={TiArrowLeftThick}title="Return" />
+      <Link to='/signUp'>
+      <ButtonText icon={TiArrowLeftThick}title="Cadastrar" />
+      </Link>
       </Form>
       <Background />
     </Container>
