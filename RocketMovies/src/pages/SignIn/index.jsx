@@ -1,5 +1,7 @@
 import { Container, Background, Form } from './styles';
 
+import { useAuth } from '../../hooks/auth';
+
 import { ButtonText } from '../../components/ButtonText';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
@@ -11,6 +13,9 @@ import { FiMail, FiUserPlus } from 'react-icons/fi'
 import { TiArrowLeftThick } from "react-icons/ti";
 
 export function SignIn () {
+  const data = useAuth()
+  console.log("mandar um xis salada por email para ", data)
+
   return (
     <Container>
       <Form>
