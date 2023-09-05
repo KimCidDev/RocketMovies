@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 import { Container, Background, Form } from './styles';
 
+import { Link, useNavigate } from 'react-router-dom';
+
 import { ButtonText } from '../../components/ButtonText';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
@@ -17,6 +19,8 @@ export function SignUp () {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const navigate = useNavigate()
+
   async function handleSignUp () {
     if (!name || !email || !password) {
       return alert("Não deixe campos vazios, por favor.")      
@@ -24,6 +28,8 @@ export function SignUp () {
 
     api.post('/users', { name, email, password }).then(() => {
       alert("usuário cadastrado com sucesso! eee")
+      navigate("/")
+
     }).catch( error => { 
       if (error.response) {
         alert(error.response.data.message)
@@ -59,7 +65,7 @@ export function SignUp () {
 
       <Button title='Cadastrar' onClick={handleSignUp}/>
 
-      <ButtonText icon={TiArrowLeftThick}title="Back to Login" />
+      <Link to='/'> <ButtonText icon={TiArrowLeftThick}title="Back to Login" /></Link>
       </Form>
     </Container>
 

@@ -1,4 +1,5 @@
 import { Container, Background, Form } from './styles';
+import { useState } from 'react';
 
 import { useAuth } from '../../hooks/auth';
 
@@ -9,12 +10,18 @@ import { Logo } from '../../components/Logo'
 import { Link } from 'react-router-dom';
 
 
-import { FiMail, FiUserPlus } from 'react-icons/fi'
+import { FiMail, FiUserPlus, FiLock } from 'react-icons/fi'
 import { TiArrowLeftThick } from "react-icons/ti";
 
 export function SignIn () {
-  const data = useAuth()
-  console.log("mandar um xis salada por email para ", data)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { signIn } = useAuth()
+
+  function handleSignIn( ){
+    return signIn({email, password})
+  }
 
   return (
     <Container>
@@ -25,15 +32,19 @@ export function SignIn () {
       <h3>Sign In</h3>
 
       <Input         
-        placeholder="Nome"
-        type="text"
-        icon={FiUserPlus}/>
-      <Input         
         placeholder="Email"
         type="email"
-        icon={FiMail}/>
+        icon={FiMail}
+        onChange={(e) => setEmail(e.target.value)}/>
+      <Input         
+        placeholder="Senha"
+        type="password"
+        icon={FiLock}
+        onChange={(e) => setEmail(e.target.value)}/>
 
-      <Button title='Entrar'/>
+      <Button 
+      title='Entrar'
+      onClick={handleSignIn()}/>
 
       <ButtonText icon={TiArrowLeftThick}title="Return" />
       <Link to='/signUp'>
