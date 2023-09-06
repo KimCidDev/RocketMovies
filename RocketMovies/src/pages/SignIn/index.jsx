@@ -1,5 +1,5 @@
-import { Container, Background, Form } from './styles';
 import { useState } from 'react';
+import { Container, Background, Form } from './styles';
 
 import { useAuth } from '../../hooks/auth';
 
@@ -17,10 +17,12 @@ export function SignIn () {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signIn } = useAuth()
+  const {signIn} = useAuth();
 
   function handleSignIn( ){
-    return signIn({email, password})
+    console.log("Email:", email);
+    console.log("Password:", password);
+    signIn({ email, password });
   }
 
   return (
@@ -35,16 +37,16 @@ export function SignIn () {
         placeholder="Email"
         type="email"
         icon={FiMail}
-        onChange={(e) => setEmail(e.target.value)}/>
+        onChange={e => setEmail(e.target.value)}/>
       <Input         
         placeholder="Senha"
         type="password"
         icon={FiLock}
-        onChange={(e) => setEmail(e.target.value)}/>
+        onChange={e => setPassword(e.target.value)}/>
 
       <Button 
       title='Entrar'
-      onClick={handleSignIn()}/>
+      onClick={handleSignIn}/>
 
       <ButtonText icon={TiArrowLeftThick}title="Return" />
       <Link to='/signUp'>

@@ -51,17 +51,17 @@ export function SignUp () {
         placeholder="Nome"
         type="text"
         icon={FiUserPlus}
-        onChange={(e) => setName(e.target.value)}/>
+        onChange={e => setName(e.target.value)}/>
       <Input         
         placeholder="Email"
         type="email"
         icon={FiMail}
-        onChange={(e) => setEmail(e.target.value)}/>
+        onChange={e => setEmail(e.target.value)}/>
       <Input         
         placeholder="Password"
         type="password"
         icon={FiLock}
-        onChange={(e) => setPassword(e.target.value)}/>
+        onChange={e => setPassword(e.target.value)}/>
 
       <Button title='Cadastrar' onClick={handleSignUp}/>
 
