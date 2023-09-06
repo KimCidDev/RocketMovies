@@ -12,6 +12,8 @@ function AuthProvider({ children }) {
   );
     const { token, user } = response.data;
 
+    localStorage.setItem('@shreddedMind:user', JSON.stringify(user))
+
     api.defaults.headers.authorization = `Bearer ${token}`;
     setData({user, token})
     
