@@ -44,6 +44,7 @@ export const Profile = styled.div`
     span {
       font-size: 14px;
       color: ${({ theme }) => theme.COLORS.DIRTY_WHITE};
+      cursor: pointer;
     }
   }
 

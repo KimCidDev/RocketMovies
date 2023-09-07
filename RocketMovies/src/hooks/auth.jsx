@@ -18,13 +18,6 @@ function AuthProvider({ children }) {
 }
 };
 
-  function signOut () {
-        localStorage.removeItem("@shreddedMind:user");
-        localStorage.removeItem("shreddedMind:token");
-
-        setData({})
-  }
-
   async function signIn ({email, password}) {
     try {
     const response = await api.post("/sessions", { password, email }
@@ -46,7 +39,14 @@ function AuthProvider({ children }) {
       }
 
     }
-  }
+  }  
+
+  function signOut () {
+    localStorage.removeItem("@shreddedMind:user");
+    localStorage.removeItem("shreddedMind:token");
+
+    setData({})
+}
 
   useEffect(() => {
     const token = localStorage.getItem('@shreddedMind:token');
