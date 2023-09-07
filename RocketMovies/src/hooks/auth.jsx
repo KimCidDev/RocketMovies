@@ -41,6 +41,20 @@ function AuthProvider({ children }) {
     }
   }  
 
+  async function Update () {
+    try {
+    api.post('/users', user)
+    localStorage.setItem('@shreddedMind:user', JSON.stringify(user))
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("Não rolou essa atualização, vai ver o que aconteceu.")
+      }
+      console.log(error)
+    }
+  }
+
   function signOut () {
     localStorage.removeItem("@shreddedMind:user");
     localStorage.removeItem("shreddedMind:token");

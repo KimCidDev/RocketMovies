@@ -18,15 +18,7 @@ export function Profile () {
   const [ passwordOld, setPasswordOld ] = useState()
   const [ passwordNew, setPasswordNew ] = useState()
 
-  async function handleUpdate () {
-    try {
-    api.post('/notes', (user) => {
-        name
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  
   return (
     <Container>
       <header>
