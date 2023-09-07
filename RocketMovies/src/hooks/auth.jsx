@@ -18,21 +18,11 @@ function AuthProvider({ children }) {
 }
 };
 
-  async function signOut () {
-    try {
-      const { token, user } = response.data;
-
-      if (token && user) {
+  function signOut () {
         localStorage.removeItem("@shreddedMind:user");
         localStorage.removeItem("shreddedMind:token");
 
-      } else {
-        localStorage.clear();
-      }
-
-    } catch (error) {
-      console.log(error)
-    }
+        setData({})
   }
 
   async function signIn ({email, password}) {
@@ -44,7 +34,7 @@ function AuthProvider({ children }) {
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user))
     localStorage.setItem('@shreddedMind:token', token)
 
-    api.defaults.headers.authorization = `Bearer ${token}`;
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     setData({user, token})
     
     console.log({user, token})
@@ -58,14 +48,12 @@ function AuthProvider({ children }) {
     }
   }
 
-  
-
   useEffect(() => {
     const token = localStorage.getItem('@shreddedMind:token');
     const user = localStorage.getItem('@shreddedMind:user');
 
     if (token && user) {
-    api.defaults.headers.authorization = `Bearer ${token}`;
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     setData({
       token,
       user: JSON.parse(user)

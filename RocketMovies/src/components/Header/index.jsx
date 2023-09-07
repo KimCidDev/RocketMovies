@@ -13,9 +13,9 @@ export function Header () {
       <Profile>
         <div>
           <strong>Kim Teixeira</strong>
-          <Link to="/SignIn" onClick={signOut}>
-          <span>sair</span>
-          </Link>
+          
+          <span onClick={signOut}>sair</span>
+          
           </div>
           <Link to="/Profile">
         <img src="https://github.com/kimciddev.png" alt="user profile image" />
