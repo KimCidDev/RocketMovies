@@ -41,7 +41,7 @@ function AuthProvider({ children }) {
     }
   }  
 
-  async function Update () {
+  async function Update ({user}) {
     try {
     api.post('/users', user)
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user))
