@@ -18,6 +18,23 @@ function AuthProvider({ children }) {
 }
 };
 
+  async function signOut () {
+    try {
+      const { token, user } = response.data;
+
+      if (token && user) {
+        localStorage.removeItem("@shreddedMind:user");
+        localStorage.removeItem("shreddedMind:token");
+
+      } else {
+        localStorage.clear();
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   async function signIn ({email, password}) {
     try {
     const response = await api.post("/sessions", { password, email }
@@ -59,7 +76,7 @@ function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{praiseOrNot, signIn, user: data.user}}
+      value={{praiseOrNot, signIn, signOut, user: data.user}}
     >
       {children}
     </AuthContext.Provider>

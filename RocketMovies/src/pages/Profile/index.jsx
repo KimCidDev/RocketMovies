@@ -7,6 +7,7 @@ import { TiArrowLeftThick } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 
 export function Profile () {
+  
   return (
     <Container>
       <header>
