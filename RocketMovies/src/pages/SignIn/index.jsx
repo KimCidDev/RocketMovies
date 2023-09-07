@@ -17,12 +17,14 @@ export function SignIn () {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {signIn} = useAuth();
+  const {signIn, praiseOrNot} = useAuth();
 
   function handleSignIn( ){
     console.log("Email:", email);
     console.log("Password:", password);
     signIn({ email, password });
+    praiseOrNot()
+
   }
 
   return (
