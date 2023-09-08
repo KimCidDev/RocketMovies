@@ -41,10 +41,11 @@ function AuthProvider({ children }) {
     }
   }  
 
-  async function Update ({user}) {
+  async function updateProfile ({user}) {
     try {
-    api.post('/users', user)
+    api.put('/users', user)
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user))
+    setData({user, token: data.token})
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message)
@@ -78,7 +79,11 @@ function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{praiseOrNot, signIn, signOut, user: data.user}}
+      value={{praiseOrNot, 
+        signIn,
+        updateProfile,
+        signOut, 
+        user: data.user}}
     >
       {children}
     </AuthContext.Provider>

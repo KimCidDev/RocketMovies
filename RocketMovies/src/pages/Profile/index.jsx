@@ -11,14 +11,23 @@ import { TiArrowLeftThick } from "react-icons/ti";
 import { Link } from 'react-router-dom';
 
 export function Profile () {
-  const { user } = useAuth();
+  const { user, updateProfile } = useAuth();
 
   const [ name, setName ] = useState(user.name)
   const [ email, setEmail ] = useState(user.email)
   const [ passwordOld, setPasswordOld ] = useState()
   const [ passwordNew, setPasswordNew ] = useState()
 
-  
+  async function handleUpdate () {
+    const user = {
+      name,
+      email,
+      passwordOld: passwordOld,
+      passwordNew: passwordNew
+    }
+
+    await updateProfile ({ user })
+    }
   return (
     <Container>
       <header>
@@ -65,7 +74,7 @@ export function Profile () {
 
 
         
-        <button> <Link to='/'>Pronto!</Link></button>
+        <button> <Link to='/' onClick={handleUpdate}>Pronto!</Link></button>
         
         </Form>
 
