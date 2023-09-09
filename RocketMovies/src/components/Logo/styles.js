@@ -5,7 +5,7 @@ export const Container = styled.div`
     font-family: 'Geologica', sans-serif;
     font-weight: 700;
     letter-spacing: 1.5px;
-    color: ${({ theme }) => theme.COLORS.YELLOW_500};
+    color: ${({ theme }) => theme.COLORS.YELLOW_600};
 
     text-overflow: ellipsis;
     white-space: nowrap;

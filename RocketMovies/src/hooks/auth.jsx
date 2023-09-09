@@ -43,9 +43,10 @@ function AuthProvider({ children }) {
 
   async function updateProfile ({user}) {
     try {
-    api.put('/users', user)
-    localStorage.setItem('@shreddedMind:user', JSON.stringify(user))
-    setData({user, token: data.token})
+    await api.put('/users', user);
+    localStorage.setItem('@shreddedMind:user', JSON.stringify(user));
+    setData({user, token: data.token});
+    alert("Tu estás ligeiramente diferente, mas ainda és tu");
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message)

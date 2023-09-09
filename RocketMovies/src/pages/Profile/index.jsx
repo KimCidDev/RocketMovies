@@ -22,8 +22,8 @@ export function Profile () {
     const user = {
       name,
       email,
-      passwordOld: passwordOld,
-      passwordNew: passwordNew
+      password: passwordNew,
+      old_passwordN: passwordOld
     }
 
     await updateProfile ({ user })
@@ -74,7 +74,7 @@ export function Profile () {
 
 
         
-        <button> <Link to='/' onClick={handleUpdate}>Pronto!</Link></button>
+        <button onClick={handleUpdate}>  <Link to='/'>Pronto!</Link></button>
         
         </Form>
 
