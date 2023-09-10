@@ -49,11 +49,12 @@ function AuthProvider({ children }) {
     alert("Tu estás ligeiramente diferente, mas ainda és tu");
     } catch (error) {
       if (error.response) {
+        console.log(error)
         alert(error.response.data.message)
       } else {
         alert("Não rolou essa atualização, vai ver o que aconteceu.")
       }
-      console.log(error)
+      
     }
   }
 

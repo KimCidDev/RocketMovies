@@ -8,7 +8,7 @@ import { ButtonText } from '../../components/ButtonText';
 
 import {  FiMail, FiLock, FiUserPlus, FiCamera } from 'react-icons/fi'
 import { TiArrowLeftThick } from "react-icons/ti";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export function Profile () {
   const { user, updateProfile } = useAuth();
@@ -23,10 +23,13 @@ export function Profile () {
       name,
       email,
       password: passwordNew,
-      old_passwordN: passwordOld
+      old_password: passwordOld
     }
 
     await updateProfile ({ user })
+
+    const navigate = useNavigate()
+    navigate('/')
     }
   return (
     <Container>
