@@ -6,18 +6,6 @@ export const AuthContext = createContext({});
 function AuthProvider({ children }) {
   const [ data, setData ] = useState({})
 
-  async function praiseOrNot () {
-  const min = 1;
-  const max = 100;
-  const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
-
-  if (randomInt % 2 === 0) {
-  return console.log("Vai que é tua, meu guri. Vai te dar um carinho");
-} else {
-  return console.log("Tu só estudou, tu não ganha nada a mais por fazer o óbvio")
-}
-};
-
   async function signIn ({email, password}) {
     try {
     const response = await api.post("/sessions", { password, email }
