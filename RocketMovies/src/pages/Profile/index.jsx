@@ -13,10 +13,22 @@ import { Link, useNavigate } from 'react-router-dom';
 export function Profile () {
   const { user, updateProfile } = useAuth();
 
-  const [ name, setName ] = useState(user.name)
-  const [ email, setEmail ] = useState(user.email)
-  const [ passwordOld, setPasswordOld ] = useState()
-  const [ passwordNew, setPasswordNew ] = useState()
+  const [ name, setName ] = useState(user.name);
+  const [ email, setEmail ] = useState(user.email);
+  const [ passwordOld, setPasswordOld ] = useState();
+  const [ passwordNew, setPasswordNew ] = useState();
+  
+  const [ avatar, setAvatar ] = useState(user.avatar);
+  const [ avatarFile, setavatarFile ] = useState(null);
+  
+
+  async function handleAvatarUpdate (event) {
+    const file = event.target.files[0];
+    setavatarFile(file);
+
+    const imgPreview = URL.createObjectURL(file);
+    setAvatar(imgPreview);
+  }
 
   async function handleUpdate () {
     const user = {
@@ -42,10 +54,13 @@ export function Profile () {
 
       <Form>
       <Avatar>
-        <img src="https://github.com/kimciddev.png" alt="User Profile picture" />
+          <img src={avatar} alt="User Profile picture" />
         <label htmlFor="avatar">
           <FiCamera />
-          <input id="avatar" type="file" />
+          <input 
+          id="avatar"
+          type="file" 
+          onChange={handleAvatarUpdate}/>
         </label>
       </Avatar>
       

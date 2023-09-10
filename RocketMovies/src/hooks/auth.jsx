@@ -69,7 +69,7 @@ function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{praiseOrNot, 
+      value={{ 
         signIn,
         updateProfile,
         signOut, 
