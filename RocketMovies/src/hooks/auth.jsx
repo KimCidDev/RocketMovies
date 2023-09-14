@@ -29,9 +29,18 @@ function AuthProvider({ children }) {
     }
   }  
 
-  async function updateProfile ({user}) {
+  async function updateProfile ({ user, avatarFile }) {
     try {
-    await api.put('/users', user);
+      if (avatarFile) {
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("avatar", avatarFile);
+
+        const response = await api.patch('/users/avatar', fileUploadForm);
+        
+        user.avatar = response.data.avatar;
+      }
+
+    await api.put('/users', user );
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user));
     setData({user, token: data.token});
     alert("Tu estás ligeiramente diferente, mas ainda és tu");

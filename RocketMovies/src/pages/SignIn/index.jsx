@@ -10,20 +10,19 @@ import { Logo } from '../../components/Logo'
 import { Link } from 'react-router-dom';
 
 
-import { FiMail, FiUserPlus, FiLock } from 'react-icons/fi'
+import { FiMail, FiLock } from 'react-icons/fi'
 import { TiArrowLeftThick } from "react-icons/ti";
 
 export function SignIn () {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {signIn, praiseOrNot} = useAuth();
+  const {signIn} = useAuth();
 
   function handleSignIn( ){
     console.log("Email:", email);
     console.log("Password:", password);
-    signIn({ email, password });
-    praiseOrNot()
+    signIn({ email, password });  
 
   }
 

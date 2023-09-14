@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 import { Container, Avatar, Form } from './styles';
 import { Input } from '../../components/Input';
 import { ButtonText } from '../../components/ButtonText';
@@ -15,20 +16,15 @@ export function Profile () {
 
   const [ name, setName ] = useState(user.name);
   const [ email, setEmail ] = useState(user.email);
-  const [ passwordOld, setPasswordOld ] = useState();
-  const [ passwordNew, setPasswordNew ] = useState();
-  
-  const [ avatar, setAvatar ] = useState(user.avatar);
-  const [ avatarFile, setavatarFile ] = useState(null);
-  
+  const [ passwordOld, setPasswordOld ] = useState("");
+  const [ passwordNew, setPasswordNew ] = useState("");
 
-  async function handleAvatarUpdate (event) {
-    const file = event.target.files[0];
-    setavatarFile(file);
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
-    const imgPreview = URL.createObjectURL(file);
-    setAvatar(imgPreview);
-  }
+  const [ avatar, setAvatar ] = useState(avatarUrl);
+  const [ avatarFile, setAvatarFile ] = useState(null);
+  
+  const navigate = useNavigate()
 
   async function handleUpdate () {
     const user = {
@@ -38,11 +34,22 @@ export function Profile () {
       old_password: passwordOld
     }
 
-    await updateProfile ({ user })
+    await updateProfile ({ user, avatarFile })
 
-    const navigate = useNavigate()
+
     navigate('/')
-    }
+    };
+
+    async function handleAvatarUpdate (event) {
+      // 'file' é o arquivo escolhido pelo usuário.
+      const file = event.target.files[0];
+      setAvatarFile(file);
+  
+      const imgPreview = URL.createObjectURL(file);
+      setAvatar(imgPreview);
+    };
+
+
   return (
     <Container>
       <header>
@@ -54,7 +61,8 @@ export function Profile () {
 
       <Form>
       <Avatar>
-          <img src={avatar} alt="User Profile picture" />
+          <img src={avatar}
+           alt="User Profile picture" />
         <label htmlFor="avatar">
           <FiCamera />
           <input 
@@ -92,7 +100,7 @@ export function Profile () {
 
 
         
-        <button onClick={handleUpdate}>  <Link to='/'>Pronto!</Link></button>
+        <button onClick={handleUpdate}> Pronto!</button>
         
         </Form>
 
