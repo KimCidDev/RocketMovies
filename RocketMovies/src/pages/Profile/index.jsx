@@ -19,19 +19,24 @@ export function Profile () {
   const [ passwordOld, setPasswordOld ] = useState("");
   const [ passwordNew, setPasswordNew ] = useState("");
 
-  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
+
+
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
   const [ avatar, setAvatar ] = useState(avatarUrl);
   const [ avatarFile, setAvatarFile ] = useState(null);
-  
+  console.log(avatarFile)
   const navigate = useNavigate()
+
 
   async function handleUpdate () {
     const user = {
       name,
       email,
       password: passwordNew,
+      avatar: avatarFile,
       old_password: passwordOld
+      
     }
 
     await updateProfile ({ user, avatarFile })
