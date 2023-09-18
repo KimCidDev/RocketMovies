@@ -18,7 +18,6 @@ function AuthProvider({ children }) {
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     setData({user, token})
     
-    console.log({user, token})
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message) 
@@ -31,20 +30,28 @@ function AuthProvider({ children }) {
 
   async function updateProfile ({ user, avatarFile  }) {
     try {
-      if (avatarFile) {
-        const fileUploadForm = new FormData();
-        fileUploadForm.append("avatar", avatarFile);
+      console.log("Before if statement");
+      if(avatarFile) {
+        const fileUploadForm = new FormData()
+        fileUploadForm.append("avatar", avatarFile)
+        alert(fileUploadForm)
 
-        const response = await api.patch('/users/profile', fileUploadForm);
-        
-        user.avatar = response.data.avatar;
+        const response = await api.patch("/users/avatar", fileUploadForm)
+        console.log(response)
+        return user.avatar = response.data.avatar
+
+      } else {
+        console.log("Não deu")
       }
+      console.log("After if statement");
 
     await api.put('/users', user );
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user));
     setData({user, token: data.token});
     alert("Tu estás ligeiramente diferente, mas ainda és tu");
     } catch (error) {
+      alert("alooooo");
+      console.error(error); // Log the error for better debugging
       if (error.response) {
         console.log(error)
         alert(error.response.data.message)
