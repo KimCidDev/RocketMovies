@@ -32,14 +32,13 @@ function AuthProvider({ children }) {
     try {
       console.log("Before if statement");
       if(avatarFile) {
-        const fileUploadForm = new FormData()
-        fileUploadForm.append("avatar", avatarFile)
-        alert(fileUploadForm)
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("avatar", avatarFile);
 
-        const response = await api.patch("/users/avatar", fileUploadForm)
-        console.log(response)
-        return user.avatar = response.data.avatar
 
+        const response = await api.patch("/users/avatar", fileUploadForm);
+        user.avatar = response.data.avatar;
+        console.log(user.avatar)
       } else {
         console.log("Não deu")
       }
@@ -48,9 +47,8 @@ function AuthProvider({ children }) {
     await api.put('/users', user );
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user));
     setData({user, token: data.token});
-    alert("Tu estás ligeiramente diferente, mas ainda és tu");
+    alert("Updated!");
     } catch (error) {
-      alert("alooooo");
       console.error(error); // Log the error for better debugging
       if (error.response) {
         console.log(error)

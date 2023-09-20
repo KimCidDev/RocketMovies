@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
@@ -9,7 +9,7 @@ import { ButtonText } from '../../components/ButtonText';
 
 import {  FiMail, FiLock, FiUserPlus, FiCamera } from 'react-icons/fi'
 import { TiArrowLeftThick } from "react-icons/ti";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export function Profile () {
   const { user, updateProfile } = useAuth();
@@ -18,11 +18,12 @@ export function Profile () {
   const [ email, setEmail ] = useState(user.email);
   const [ passwordOld, setPasswordOld ] = useState("");
   const [ passwordNew, setPasswordNew ] = useState("");
-  const avatarUrl = user.avatar ? new URL(`${api.defaults.baseURL}/files/${user.avatar}`).pathname : avatarPlaceholder;
 
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+  console.log(avatarUrl)
 
   const [ avatar, setAvatar ] = useState(avatarUrl);
-  const [ avatarFile, setAvatarFile ] = useState(user.avatar);
+  const [ avatarFile, setAvatarFile ] = useState(null);
 
 
   async function handleUpdate () {
@@ -34,8 +35,9 @@ export function Profile () {
     }
 
     await updateProfile ({ user, avatarFile })
+    alert("Good to go!")
 
-    
+    console.log(user);    
     };
 
     async function handleAvatarUpdate (event) {
@@ -55,12 +57,6 @@ export function Profile () {
       
     };
 
-
-
-    useEffect(() => {
-      setAvatar((prev) => user.avatar ? avatarUrl : prev);
-    }, [user.avatar, avatarUrl]);
-
   return (
     <Container>
       <header>
@@ -73,12 +69,11 @@ export function Profile () {
       <Form>
       <Avatar>
           <img src={avatar}
-           alt="User Profile picture xis salada" />
+           alt="User Profile picture" />
         <label htmlFor="avatar">
           <FiCamera />
           <input 
           id="avatar"
-          name="avatar"
           type="file" 
           onChange={handleAvatarUpdate}/>
         </label>

@@ -12,7 +12,6 @@ export function AppRoutes () {
       <Route path='/profile' element={<Profile />}/>
       <Route path='/new' element={<NewMemory />}/>
       <Route path='/ShowMemory/:id' element={<ShowMemory />}/>
-      <Route path="*" element={<div> Not Found or You do not have permission.</div>}/>
     </Routes>
   )
 }
