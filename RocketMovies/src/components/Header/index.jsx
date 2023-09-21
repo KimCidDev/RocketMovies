@@ -24,12 +24,12 @@ export function Header () {
           <span onClick={signOut}>sair</span>
           
           </div>
-        {/* <Link to='/Profile'>
+        <Link to='/Profile'>
         <img 
         src={avatarUrl} 
         alt="user profile image"  
         />
-  </Link> */}
+        </Link> 
       </Profile>
     </Container>
   )

@@ -30,7 +30,6 @@ function AuthProvider({ children }) {
 
   async function updateProfile ({ user, avatarFile  }) {
     try {
-      console.log("Before if statement");
       if(avatarFile) {
         const fileUploadForm = new FormData();
         fileUploadForm.append("avatar", avatarFile);
