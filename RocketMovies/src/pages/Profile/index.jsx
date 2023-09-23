@@ -1,23 +1,26 @@
 import { useState } from 'react';
-import { useAuth } from '../../hooks/auth';
-import { api } from '../../services/api';
+import { Link } from 'react-router-dom';
 
-import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
+import { api } from '../../services/api';
+import { useAuth } from '../../hooks/auth';
+
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+
 import { Container, Avatar, Form } from './styles';
 import { Input } from '../../components/Input';
 import { ButtonText } from '../../components/ButtonText';
 
 import {  FiMail, FiLock, FiUserPlus, FiCamera } from 'react-icons/fi'
 import { TiArrowLeftThick } from "react-icons/ti";
-import { Link } from 'react-router-dom';
+
 
 export function Profile () {
   const { user, updateProfile } = useAuth();
 
   const [ name, setName ] = useState(user.name);
   const [ email, setEmail ] = useState(user.email);
-  const [ passwordOld, setPasswordOld ] = useState("");
-  const [ passwordNew, setPasswordNew ] = useState("");
+  const [ passwordOld, setPasswordOld ] = useState();
+  const [ passwordNew, setPasswordNew ] = useState();
 
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
   console.log(avatarUrl)
@@ -32,16 +35,26 @@ export function Profile () {
       email,
       password: passwordNew,
       old_password: passwordOld      
-    }
+    }    
 
-    updatedUser = Object.assign(user, updated);
-    // return console.log(updatedUser);
+    try {
+      if (avatarFile) {
+        const fileUploadForm = new FormData();
+        fileUploadForm.append('avatar', avatarFile);
+  
+        const response = await api.patch('/users/avatar', fileUploadForm);
+        updated.avatar = response.data.avatar; // Update the user's avatar data
+        console.log(updated)
+      }
 
-    await updateProfile ({ user: updatedUser, avatarFile })
-    alert("Good to go!")    
-    };
+    await updateProfile ({ user: updated, avatarFile })
+    } catch (error) {
+      alert(error)     
+    
+    } ;
+  }
 
-    async function handleAvatarUpdate (event) {
+   function handleAvatarUpdate (event) {
       // 'file' é o arquivo escolhido pelo usuário.
       const file = event.target.files[0];
       
@@ -54,6 +67,7 @@ export function Profile () {
         const imgPreview = URL.createObjectURL(file);
 
         setAvatar(imgPreview);
+        console.log('Avatar state updated:', avatar); // Check if the state is updated
       }
       
     };
@@ -69,8 +83,9 @@ export function Profile () {
 
       <Form>
       <Avatar>
-          <img src={avatar}
-           alt="User Profile picture" />
+          <img 
+          src={avatar}
+          alt="User's profile picture" />
         <label htmlFor="avatar">
           <FiCamera />
           <input 
@@ -106,8 +121,6 @@ export function Profile () {
         onChange={e => setPasswordNew(e.target.value)}
         />
 
-
-        
         <button onClick={handleUpdate}> Pronto!</button>
         
         </Form>

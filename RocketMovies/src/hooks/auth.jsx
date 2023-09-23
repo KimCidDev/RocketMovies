@@ -8,9 +8,9 @@ function AuthProvider({ children }) {
 
   async function signIn ({email, password}) {
     try {
-    const response = await api.post("/sessions", { password, email }
+    const response = await api.post("/sessions", { email, password }
   );
-    const { token, user } = response.data;
+    const { user, token } = response.data;
 
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user))
     localStorage.setItem('@shreddedMind:token', token)
@@ -28,6 +28,15 @@ function AuthProvider({ children }) {
     }
   }  
 
+  function signOut () {
+
+    
+    localStorage.removeItem("@shreddedMind:user");
+    localStorage.removeItem("@shreddedMind:token");
+
+    setData({})
+}
+
   async function updateProfile ({ user, avatarFile  }) {
     try {
       if(avatarFile) {
@@ -36,8 +45,14 @@ function AuthProvider({ children }) {
 
 
         const response = await api.patch("/users/avatar", fileUploadForm);
+        console.log(response.data)
         user.avatar = response.data.avatar;
-        console.log(user.avatar)
+
+              /* Update user data in state
+      await setData({ ...data, user });
+      localStorage.setItem('@shreddedMind:user', JSON.stringify(user));
+      */
+
       } else {
         console.log("Não deu")
       }
@@ -45,26 +60,21 @@ function AuthProvider({ children }) {
 
     await api.put('/users', user );
     localStorage.setItem('@shreddedMind:user', JSON.stringify(user));
+
     setData({user, token: data.token});
     alert("Updated!");
+
     } catch (error) {
-      console.error(error); // Log the error for better debugging
       if (error.response) {
-        console.log(error)
-        alert(error.response.data.message)
+        alert(error.response.data.message) 
       } else {
-        alert("Não rolou essa atualização, vai ver o que aconteceu.")
+        alert("Não foi possível iniciar nova sessão")
       }
-      
+
     }
   }
 
-  function signOut () {
-    localStorage.removeItem("@shreddedMind:user");
-    localStorage.removeItem("shreddedMind:token");
 
-    setData({})
-}
 
   useEffect(() => {
     const token = localStorage.getItem('@shreddedMind:token');
@@ -84,8 +94,8 @@ function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{ 
         signIn,
+        signOut,
         updateProfile,
-        signOut, 
         user: data.user}}
     >
       {children}
